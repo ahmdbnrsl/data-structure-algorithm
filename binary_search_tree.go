@@ -88,6 +88,7 @@ func (bst *Bst) DeleteValue(node *TNode, target int) *TNode {
         }
         node.value = successor.value
         node.right = bst.DeleteValue(node.right, successor.value)
+        
     }
     return node
 }
@@ -111,10 +112,10 @@ func main() {
     bst.Insert(11)
     bst.Insert(20)
     bst.Insert(5)
-    bst.Inorder(bst.Root)
-    bst.DeleteValue(bst.Root, 7)
-    bst.Inorder(bst.Root)
-    bst.DeleteValue(bst.Root, 9)
-    fmt.Println(bst.Root.right.left)
-    bst.Inorder(bst.Root)
+    //bst.Inorder(bst.Root)
+    //bst.DeleteValue(bst.Root, 7)
+    //bst.Inorder(bst.Root)
+    bst.DeleteValue(bst.Root, 20)
+    //fmt.Println(bst.Root.right.left)
+    //bst.Inorder(bst.Root)
 }
