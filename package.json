@@ -1,0 +1,25 @@
+{
+  "name": "data-structure-algorithm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+      "start": "tsc && node --loader ts-node/esm queue_priority.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmdbnrsl/data-structure-algorithm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmdbnrsl/data-structure-algorithm/issues"
+  },
+  "homepage": "https://github.com/ahmdbnrsl/data-structure-algorithm#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "ts-node": "^10.9.2"
+  }
+}
