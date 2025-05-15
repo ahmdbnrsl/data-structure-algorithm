@@ -94,7 +94,7 @@ func bracketMatcher(params string) bool {
 
 func main() {
     fmt.Println(bracketMatcher("{}[]()()")) // true
-    fmt.Println(bracketMatcher("(({[{[()]}]}))")) // true
+    fmt.Println(bracketMatcher("({[()]})")) // true
     fmt.Println(bracketMatcher("{{}}[]()()")) // false
     fmt.Println(bracketMatcher("{({([}])])")) // false
     fmt.Println(bracketMatcher(")()((()(")) // false
