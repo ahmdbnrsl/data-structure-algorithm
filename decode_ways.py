@@ -69,7 +69,7 @@ def decode_ways(number: str, start=0):
         
     return count_of_ways
     
-print(decode_ways('22612'))
+print(decode_ways('226123112'))
 
 def num_decodings(s: str) -> int:
     if not s or s[0] == '0':
@@ -77,10 +77,15 @@ def num_decodings(s: str) -> int:
 
     dp = [0] * (len(s) + 1)
     dp[0], dp[1] = 1, 1
+    
+    print(dp)
 
     for i in range(2, len(s) + 1):
         one = int(s[i-1:i])
         two = int(s[i-2:i])
+        
+        print(one, two)
+        print(dp)
         
         if 1 <= one <= 9:
             dp[i] += dp[i - 1]
