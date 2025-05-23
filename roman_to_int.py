@@ -1,13 +1,7 @@
 def roman_to_int(roman: str) -> int:
     roman = roman.upper()
     list_roman = {
-        "I": 1,
-        "V": 5,
-        "X": 10,
-        "L": 50,
-        "C": 100,
-        "D": 500,
-        "M": 1000
+        "I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000
     }
     
     if len(roman) == 1: return list_roman[roman]
@@ -62,5 +56,10 @@ def roman_to_int(roman: str) -> int:
         
     return result
     
-    
-print(roman_to_int("MCDLXXXIX"))
+test_romans = [
+    "XIV", "MCMXCIV", "MMMDCCCLXXXVIII",  # valid
+    "IIII", "IIV", "IC", "XXL",            # invalid
+]
+
+for r in test_romans:
+    print(f"{r} => {roman_to_int(r)}")
