@@ -14,4 +14,4 @@ def identity(o, c):
     
     return temp
 
-print(identity(2, 99))
+print(identity(5, 2))
