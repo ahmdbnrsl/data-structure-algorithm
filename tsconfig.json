@@ -1,9 +1,9 @@
 {
 
 	"compilerOptions": {
-		"target": "es2017",
-		"moduleResolution": "classic",
-		"module": "es2022",
+		"target": "es2022",
+		"moduleResolution": "nodenext",
+		"module": "nodenext",
 		"noEmit": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,

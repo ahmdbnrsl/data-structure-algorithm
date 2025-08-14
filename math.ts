@@ -1,4 +1,5 @@
 const readline = await import("readline");
+const { exec } = await import("child_process");
 
 const arg: string = `*[Math]*
 
@@ -71,7 +72,24 @@ function getMathQuestion() {
             if (fullText === "exit") {
                 return;
             }
-            console.log("HASILNYA : ", solveMath(fullText));
+            try {
+                console.log("Calculate Result, wait...");
+                const result = solveMath(fullText);
+                if (result) {
+                    exec(`termux-clipboard-set -- "${result}"`, e => {
+                        if (e) {
+                            console.error(e);
+                        } else {
+                            console.log("HASILNYA : ", result);
+                        }
+                    });
+                } else {
+                    console.log("Failed to calculate result");
+                    getMathQuestion();
+                }
+            } catch (e) {
+                console.log(e);
+            }
         }
         getMathQuestion();
     });
