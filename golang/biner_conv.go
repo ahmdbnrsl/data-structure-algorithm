@@ -32,7 +32,8 @@ func decimalToBinary(decimal int64) []int64 {
     return bin
 }
 
-func binaryToDecimal(biner, dictBase []int64) int64 {
+func binaryToDecimal(biner []int64) int64 {
+    dictBase := generateDictBase(1e3)
     var result int64
     var lastIndex int = len(biner) - 1
     
@@ -96,17 +97,60 @@ func LSB(biner []int64) []int64 {
     return result
 }
 
+func query(tree []int64, x int64) int64 {
+    var indices []int64 = []int64{x}
+    for x > 0 {
+        lsb := binaryToDecimal(LSB(decimalToBinary(x)))
+        indices = append(indices, x - lsb)
+        x -= lsb
+    }
+    
+    var result int64 = 0
+    for _, e := range indices {
+        result += tree[e]
+    }
+    
+    return result
+}
+
+func update(tree []int64, x int64) {
+    for x < int64(len(tree)) {
+        tree[x] += 1
+        
+        lsb := binaryToDecimal(
+            LSB(decimalToBinary(x)),
+        )
+        x = x + lsb
+    }
+}
+
+func BIT(A []int64, max int64) int64 {
+    tree := make([]int64, max)
+    var total int64
+    for i, e := range A {
+        newInversion := int64(i) - query(tree, e)
+        total += newInversion
+        update(tree, e)
+    }
+    return total
+}
+
 func main() {
-    dictBase := generateDictBase(1e3)
     
     start := time.Now()
     
-    biner := decimalToBinary(4)
+    biner := decimalToBinary(3)
     lsb := LSB(biner)
-    decimal := binaryToDecimal(lsb, dictBase)
+    decimal := binaryToDecimal(lsb)
     
     fmt.Println(biner)
     fmt.Println(decimal)
+    
+    A := []int64{6, 1, 8, 2, 5, 4, 7, 3}
+    var max int64 = 8
+    bit := BIT(A, max+1)
+    
+    fmt.Println(bit)
     
     elapsed := time.Since(start)
     fmt.Printf(" %.6f second\n", elapsed.Seconds())
