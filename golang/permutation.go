@@ -41,25 +41,16 @@ func(p *Permutation) Sign() string {
     } else {
         var cycles [][]int64
         var currentQuery []int64
-        
         for e, _ := range p.matrix {
-            if isContainItem(currentQuery, e) {
-                continue
-            }
-            
+            if isContainItem(currentQuery, e) { continue }
             var cycle []int64
             var current int64 = 0
-            
             for current != e {
-                if current == 0 {
-                    current = e
-                }
-                
+                if current == 0 { current = e }
                 currentQuery = append(currentQuery, current)
                 cycle = append(cycle, current)
                 current = p.matrix[current]
             }
-            
             cycles = append(cycles, cycle)
         }
         
@@ -68,16 +59,10 @@ func(p *Permutation) Sign() string {
             if len(e) <= 2 {
                 k += 1
                 continue
-            } else {
-                k += int64(len(e) - 1)
-            }
+            } else { k += int64(len(e) - 1) }
         }
         
-        if math.Pow(-1, float64(k)) < 1 {
-            return "Odd"
-        } else {
-            return "Even"
-        }
+        if math.Pow(-1, float64(k)) < 1 { return "Odd" } else { return "Even" }
     }
 }
 
