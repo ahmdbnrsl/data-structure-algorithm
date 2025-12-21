@@ -154,4 +154,6 @@ func main() {
     
     elapsed := time.Since(start)
     fmt.Printf(" %.6f second\n", elapsed.Seconds())
+    
+    fmt.Println(decimalToBinary(73), decimalToBinary(110))
 }
