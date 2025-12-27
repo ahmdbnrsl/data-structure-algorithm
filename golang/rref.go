@@ -129,4 +129,19 @@ func main() {
     })
     rref.GenerateRREF()
     fmt.Println(rref.AugmentedMatrix)
+    
+    // Invers matriks
+    rref.NewMatrix([][]float64{
+        []float64{1, 2, 1, 0},
+        []float64{0, 1, 0, 1},
+    })
+    rref.GenerateRREF()
+    fmt.Println(rref.AugmentedMatrix)
+    
+    rref.NewMatrix([][]float64{
+        []float64{5, 0, 1, 0},
+        []float64{0, 1, 0, 1},
+    })
+    rref.GenerateRREF()
+    fmt.Println(rref.AugmentedMatrix)
 }
