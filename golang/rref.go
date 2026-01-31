@@ -139,8 +139,10 @@ func main() {
     fmt.Println(rref.AugmentedMatrix)
     
     rref.NewMatrix([][]float64{
-        []float64{5, 0, 1, 0},
-        []float64{0, 1, 0, 1},
+        []float64{1, -1, -1, 0, 0},
+        []float64{1, 1, 0, -1, 2},
+        []float64{1, -1, 1, 0, 0},
+        []float64{1, 1, 0, 1, 0},
     })
     rref.GenerateRREF()
     fmt.Println(rref.AugmentedMatrix)
